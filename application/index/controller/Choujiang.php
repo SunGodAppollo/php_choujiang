@@ -69,9 +69,14 @@ class Choujiang extends Controller
 	 }
 	 public function setmsg(){
 	 	if (request()->isPost()){
+	 		$validate=\think\Loader::validate('User');
+	 		if(!$validate->check($_POST)){
+	 			$this->error($validate->getError());
+	 		}
+	 		
 	 		$result = db('log')->where('id='.$_POST['id'])->update($_POST);
 	 		if (!empty($result)){
-	 			Success("领取成功！");
+	 			Success("领取成功！",url('index'));
 	 		}else {
 	 			Error("领取失败");
 	 		}
