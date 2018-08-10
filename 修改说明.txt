@@ -1,0 +1,28 @@
+1.修改项目路径
+找到application-》 index-》config.php
+'view_replace_str'       => [
+				'__P__'=>'/web',
+				'__STATIC__' =>'/web/public/static/index'
+				//'__STATIC__' =>'public/static/index'
+			   
+				
+		]
+两个web改成项目名字
+2.修改后台项目路径
+找到application-》 admin-》config.php
+ 'view_replace_str'       => [
+		'__STATIC__' =>'/web/public/static/admin'
+	],
+	
+		'a'=> 'http://localhost/web'
+两个web改成项目名字
+3.修改数据库配置
+找到application-》database.php
+ 'hostname'        => '127.0.0.1',
+    // 数据库名
+    'database'        => 'mysql_db',
+    // 用户名
+    'username'        => 'root',
+    // 密码
+    'password'        => 'root',
+    修改这几个改成自己的数据库配置
