@@ -28,7 +28,11 @@ return [
 		
 		// 视图输出字符串内容替换
 		'view_replace_str'       => [
+				'__P__'=>'/web',
 				'__STATIC__' =>'/web/public/static/index'
+				//'__STATIC__' =>'public/static/index'
+			   
+				
 		]
 		
 ];

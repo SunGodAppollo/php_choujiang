@@ -61,7 +61,7 @@ body{
 
 		$('#zhuanpan_zhizheng').click(function() {
 			$.ajax({
-				url : "/web/public/index.php/index/Choujiang/choujiang",
+				url : "__P__/public/index.php/index/Choujiang/choujiang",
 				success : function(data, status) {
 					xuanzhuan(data.jiangping, data);
 				}
@@ -78,7 +78,7 @@ body{
 			$('.jieguo .msg').text("恭喜您获得了" + deg + "等奖！" + data.text);
 			if(deg!=5){
 				//alert(data.id);
-				$('.jieguo').append('<div><a href="/web/public/index.php/index/Choujiang/setmsg?id='+data.id+'""><button class="btn-g">马上领取</button><a></div>')				
+				$('.jieguo').append('<div><a href="__P__/public/index.php/index/Choujiang/setmsg?id='+data.id+'""><button class="btn-g">马上领取</button><a></div>')				
 			}
 			
 			$('#zhuanpan_zhizheng').rotate({
