@@ -1,0 +1,95 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--设置编码-->
+<title></title>
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/mian.css" />
+<style type="text/css">
+body{
+	background: url({$bg})no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+	background-size: cover;
+}
+</style>
+
+
+</head>
+
+<!--body-->
+<body>
+	<div class="logo"></div>
+	<div class="show_huodongguize" ><img alt="" src="__STATIC__/imgs/ico2.png"></div>
+
+	<div class="zhuanpan">
+
+		<div class="zhuanpan_p" id="zhuanpan_zhizheng"></div>
+
+	</div>
+	<div class="bg_hui result jieguo click_off">
+		<i></i> <img src="__STATIC__/imgs/jiangping5.png" />
+		<div id="">
+			<p class="msg">很遗憾没有中奖</p>
+		</div>
+
+	</div>
+	<!-- 活动规则 -->
+	<div class="bg_hui huodongguize click_off">
+		<!-- <h3>活动规则</h3><br/> -->
+		
+		<div id="">
+			<p>{$data}</p>
+		</div>
+	</div>
+	
+
+
+
+	<!--引入Jquery-->
+	<script type="text/javascript" src="__STATIC__/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/js/jquery.rotate.min.js"></script>
+	<script type="text/javascript">
+		/*javascript代码*/
+		$('.show_huodongguize').click(function(){
+			$('.huodongguize').show();
+		});
+		
+		$('.click_off').click(function() {
+			$(this).hide();
+		});
+
+		$('#zhuanpan_zhizheng').click(function() {
+			$.ajax({
+				url : "/web/public/index.php/index/Choujiang/choujiang",
+				success : function(data, status) {
+					xuanzhuan(data.jiangping, data);
+				}
+
+			});
+
+		});
+		function xuanzhuan(deg, data) {
+			
+		console.log(data);
+			var arr = [ 0, 2, 3, 4, 1, 5 ];
+			$('.jieguo img').attr('src',
+					data.img);
+			$('.jieguo .msg').text("恭喜您获得了" + deg + "等奖！" + data.text);
+			if(deg!=5){
+				//alert(data.id);
+				$('.jieguo').append('<div><a href="/web/public/index.php/index/Choujiang/setmsg?id='+data.id+'""><button class="btn-g">马上领取</button><a></div>')				
+			}
+			
+			$('#zhuanpan_zhizheng').rotate({
+				angle : 0,
+				duration : 8000,
+				animateTo : 360 * 5 + arr[deg] * 60 - 30,
+				callback : function() {
+					$('.jieguo').show();
+				}
+			});
+		}
+	</script>
+</body>
+</html>

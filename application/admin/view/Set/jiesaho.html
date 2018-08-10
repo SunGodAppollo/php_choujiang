@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="__STATIC__/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="__STATIC__/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="__STATIC__/css/amazeui.min.css" />
+    <link rel="stylesheet" href="__STATIC__/css/admin.css">
+    <link rel="stylesheet" href="__STATIC__/css/app.css">
+</head>
+
+<body data-type="generalComponents">
+
+
+   {include file="public/top" /}
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+ {include file="public/left" /}
+    
+
+
+
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+                奖品列表
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li class="am-active">抽奖记录列表</li>
+            </ol>
+           <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 表单
+                    </div>
+                   
+
+
+                </div>
+                <div class="tpl-block ">
+
+                    <div class="am-g tpl-amazeui-form">
+
+
+                        <div class="am-u-sm-12 am-u-md-9">
+                            <form class="am-form am-form-horizontal" method="post">
+                               <div class="am-form-group">
+                                    <label for="user-intro" class="am-u-sm-3 am-form-label">活动介绍</label>
+                                    <div class="am-u-sm-9">
+										<div id="editor">
+											<p>
+												{$data['content']}
+											</p>
+										</div>
+										<textarea  name="content" id="text1" style="display:none;  width:100%; height:200px;">
+										{$data['content']}
+										</textarea>
+									</div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <button type="submit" class="am-btn am-btn-primary">保存</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+    <script src="__STATIC__/js/jquery.min.js"></script>
+    <script src="__STATIC__/js/amazeui.min.js"></script>
+    <script src="__STATIC__/js/app.js"></script>
+    <script type="text/javascript" src="__STATIC__/release/wangEditor.min.js"></script>
+    <script type="text/javascript">
+        var E = window.wangEditor
+        var editor = new E('#editor')
+        // 自定义菜单配置
+        editor.customConfig.menus = [
+        	'head',  // 标题
+            'bold',  // 粗体
+            'fontSize',  // 字号
+            'fontName',  // 字体
+            'italic',  // 斜体
+            'foreColor',  // 文字颜色
+            'list',  // 列表
+            'justify',  // 对齐方式
+            'image',  // 插入图片
+            'undo',  // 撤销
+            'redo'  // 重复
+        ]
+        editor.customConfig.debug = true
+        // 配置服务器端地址
+        editor.customConfig.uploadImgServer = "{:url('Set/jiesahoImg')}"
+        editor.customConfig.uploadFileName = 'yourFileName'
+        var $text1 = $('#text1')
+        editor.customConfig.onchange = function (html) {
+            // 监控变化，同步更新到 textarea
+            $text1.val(html)
+        }
+        editor.create()
+        // 初始化 textarea 的值
+        $text1.val(editor.txt.html())
+    </script>
+</body>
+
+</html>

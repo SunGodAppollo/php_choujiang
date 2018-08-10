@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="__STATIC__/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="__STATIC__/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="__STATIC__/css/amazeui.min.css" />
+    <link rel="stylesheet" href="__STATIC__/css/admin.css">
+    <link rel="stylesheet" href="__STATIC__/css/app.css">
+</head>
+
+<body data-type="generalComponents">
+
+
+   {include file="public/top" /}
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+ {include file="public/left" /}
+    
+
+
+
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+                抽奖记录列表
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li class="am-active">抽奖记录列表</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 列表
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                            
+                                <i class="am-icon-search" onclick="s1_click()"></i>
+                                <input type="text" name="s1" value="" id="s1_click" class="form-control form-control-solid" placeholder="按照时间搜索...">
+                            
+                                </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-6">
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <!-- <button type="button" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</button>
+                                     <button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
+                                    <button type="button" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-archive"></span> 审核</button> -->
+                                    <a href="{:url('Huishou/allhuifu')}" type="button" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span>全部恢复</a>
+                                    <a href="{:url('Huishou/alldel')}" type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span>清空放入回收站</a>
+                                </div>
+                            </div>
+                        </div>
+                      <!--   <div class="am-u-sm-12 am-u-md-3">
+                            <div class="am-form-group">
+                                <select data-am-selected="{btnSize: 'sm'}">
+              <option value="option1">所有类别</option>
+              <option value="option2">IT业界</option>
+              <option value="option3">数码产品</option>
+              <option value="option3">笔记本电脑</option>
+              <option value="option3">平板电脑</option>
+              <option value="option3">只能手机</option>
+              <option value="option3">超极本</option>
+            </select>
+                            </div>
+                        </div> -->
+                        <div class="am-u-sm-12 am-u-md-3">
+                            <div class="am-input-group am-input-group-sm">
+                                <input type="text" id="s2_click" class="am-form-field" placeholder="按照获得奖品名字搜索">
+                                <span class="am-input-group-btn">
+            <button onclick="s2_click()" class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="button"></button>
+          </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                            <form class="am-form">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-id">ID</th>
+                                            <th class="table-type">获得奖品</th>
+                                            <th class="table-author am-hide-sm-only">电话</th>
+                                            <th class="table-title">收货人姓名</th>
+                                            <th class="table-author am-hide-sm-only">地址</th>
+                                            <th class="table-date am-hide-sm-only">抽奖时间</th>
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {volist name="list" id="log" }
+                                    <tr>
+                                    <th>{$log['id']}</th>
+                                    <th>{$log['jiangping']}</th>
+                                    <th>{$log['phone']}</th>
+                                    <th>{$log['user_name']}</th>
+                                    <th>{$log['address']}</th>
+                                    <th>{$log['time']}</th>
+                                    <th>
+                                    <div class="am-btn-group am-btn-group-xs">
+	                                    <a href="{:url('Huishou/huifu',array('id'=>$log['id']))}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 恢复</a>
+	                                    <a href="{:url('Huishou/del',array('id'=>$log['id']))}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span>彻底删除</a>
+                                    </div>
+                                    </th>
+                                    </tr>
+                                    {/volist}
+                                    </tbody>
+                                  </table>
+                                  
+                                <div class="am-cf">
+
+                                    <div class="am-fr">
+                                    {$list->render()}
+                                        <!-- <ul class="am-pagination tpl-pagination">
+                                            <li class="am-disabled"><a href="#">«</a></li>
+                                            <li class="am-active"><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li><a href="#">»</a></li>
+                                        </ul> -->
+                                    </div>
+                                </div>
+                                <hr>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+    <script src="__STATIC__/js/jquery.min.js"></script>
+    <script src="__STATIC__/js/amazeui.min.js"></script>
+    <script src="__STATIC__/js/app.js"></script>
+    
+    <script type="text/javascript">
+       function s1_click(){
+    	   val=$('#s1_click').val();
+    	   url="{:url('Home/Home')}"
+    	   window.location.href=url+"?s1="+val;
+       }
+    
+       function s2_click(){
+    	   val=$('#s2_click').val();
+    	   url="{:url('Home/Home')}"
+    	   window.location.href=url+"?s2="+val;
+       }
+    </script>
+</body>
+
+</html>

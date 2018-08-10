@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="__STATIC__/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="__STATIC__/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="__STATIC__/css/amazeui.min.css" />
+    <link rel="stylesheet" href="__STATIC__/css/admin.css">
+    <link rel="stylesheet" href="__STATIC__/css/app.css">
+</head>
+
+<body data-type="generalComponents">
+
+
+   {include file="public/top" /}
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+ {include file="public/left" /}
+    
+
+
+
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+                奖品列表
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li class="am-active">抽奖记录列表</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 列表
+                    </div>
+                    
+                    
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                                <i class="am-icon-search"></i>
+                                <input type="text" class="form-control form-control-solid" placeholder="按照时间搜索..."> </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tpl-block">
+                    <div class="am-g">
+                    <div class="am-u-sm-12 am-u-md-6">
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <a type="button" href="{:url('Home/addjiangping')}" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</a>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="am-u-sm-12 am-u-md-6">
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                   
+                        <div class="am-u-sm-12 am-u-md-3">
+                            <div class="am-input-group am-input-group-sm">
+                                <input type="text" class="am-form-field" placeholder="按照用户名搜索">
+                                <span class="am-input-group-btn">
+            <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="button"></button>
+          </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-g">
+                    
+                    
+                        <div class="am-u-sm-12">
+                            <form class="am-form">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-id">ID</th>
+                                            <th class="table-type">奖品类型</th>
+                                            <th class="table-author am-hide-sm-only">奖品内容</th>
+                                            <th class="table-author am-hide-sm-only">缩略图</th>
+                                            <th class="table-title">剩余奖品数量</th>
+                                            <th class="table-title">概率</th>
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {volist name="list" id="jiangping" }
+                                    <tr>
+                                    <th>{$jiangping['id']}</th>
+                                    <th>{$jiangping['name']}</th>
+                                    <th>{$jiangping['content']}</th>
+                                    <th><img alt="" width="100px" height="100px" src="{$jiangping['img']}"></th>
+                                    <th>{$jiangping['number']}</th>
+                                    <th>{$jiangping['gailv']}</th>
+                                    <th>
+                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="{:url('Home/editjiangping',array('id'=>$jiangping['id']))}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</a>
+                                                        <a href="{:url('Home/deljiangping',array('id'=>$jiangping['id']))}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</a>
+                                    </div>
+                                    </th>
+                                    </tr>
+                                    {/volist}
+                                    </tbody>
+                                  </table>
+                                <div class="am-cf">
+
+                                   
+                                </div>
+                                <hr>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+    <script src="__STATIC__/js/jquery.min.js"></script>
+    <script src="__STATIC__/js/amazeui.min.js"></script>
+    <script src="__STATIC__/js/app.js"></script>
+   
+</body>
+
+</html>

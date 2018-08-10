@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	
+		<style type="text/css">
+			body{
+			 margin: 0;
+			 padding: 0;
+			   font-size: 50px;
+			}
+			.text_top{
+			padding-left: 20px;
+			}
+			.text_top p{
+				color: #aaa;
+			}
+			.input_item {
+				padding-left: 20px;
+				
+				padding: 30px 20px;
+			}
+			.border-top{
+				border-top: 1px solid #aaa;
+			}
+			.border-bottom{
+				border-bottom:1px solid #aaa;
+			}
+			.input_item input{
+				position: absolute;	
+				right: 20px;			
+				height: 50px;
+				font-size: 50px;
+				border: none;
+			}
+			.input_item textarea{
+				font-size: 50px;
+				margin: 0;
+				width: 100%;
+				height: 500px;
+			}
+			.input_item button{
+				width: 100%;
+				height: 150px;
+				color: #fff;
+				font-size: 50px;
+				border-radius: 75px;
+				background-color: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="text_top">
+			<h2>填写联系信息</h2>
+			<p>为了方便兑奖,请先填写您的联系信息</p>
+		</div>
+		<form method="post">
+		<div class="input_content">
+		<input type="hidden" name="id" value="{$id}">
+			<div class="input_item border-top">
+				<label>姓名</label>
+				<input type="text" name="user_name" id="" value=""  placeholder="请输入姓名"/>
+			</div>
+			
+			<div class="input_item border-top border-bottom">
+				<label>联系电话</label>
+				<input type="text" name="phone" id="" value=""  placeholder="请输入联系电话"/>
+			</div>
+		
+		<div class="text_top">
+			<p>联系地址</p>
+		</div>
+		
+		<div class="input_item">
+				<textarea name="address" placeholder="地址完整详细信息"></textarea>
+			</div>
+		<div class="text_top">
+			<p>注：若因未填写资料或资料填写错误导致无法兑奖，主办方不承担相关法律责任；</p>
+		</div>
+		
+		<div class="input_item">
+				<button type="submit">提交</button>
+			</div>
+	</div>	
+		</form>	
+	</body>
+</html>
