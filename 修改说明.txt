@@ -26,3 +26,8 @@
     // 密码
     'password'        => 'root',
     修改这几个改成自己的数据库配置
+ 4.找到public-》static-》index-》src-》app.js
+ 
+ var host="http://localhost/web/";
+ 将host修改成自己的域名
+    
