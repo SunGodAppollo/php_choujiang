@@ -1,3 +1,5 @@
+//域名
+var host="http://localhost/web/";
 //轮播图
 var theme = "ios";
 var mode = "scroller";
@@ -141,7 +143,7 @@ $(".submit").on('click',function(){
     flag = false ;
     $.ajax({
       type:'POST',
-      url:'/api/website/addfeedback',
+      url:host+'public/index.php/index/index/check.html',//检验验证码
       data:data,
       success:function(res){
         flag = true
@@ -180,7 +182,8 @@ $(".submit").on('click',function(){
 $(".close").on('click', function () {
   $(".alertImg").hide()
   $(".mask").hide()
-  window.location.reload()
+  window.location.href=host+'public/index.php/Index/Choujiang/index';
+  //window.location.reload()
 })
 // 点击第一层的确定按钮
 $(".confirmBtn").on('click', function() {
@@ -217,7 +220,7 @@ function getVerifyCode(){
     var mobile = $('.form .telephone input')[0].value
     $.ajax({
       type:'POST',
-      url:'/api/cc/base/sendcode',
+      url:host+'public/index.php/index/index/send.html',//获取验证码
       data:{
         mobile:mobile
       },
