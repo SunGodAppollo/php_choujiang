@@ -10,6 +10,9 @@ class Choujiang extends Controller
 	 */
 	protected function _initialize()
 	{
+		if (session('?user')){
+			Error("清先填写基本信息！",url('Index/index'));
+		}
 	}
 	
     public function index()

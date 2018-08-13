@@ -33,7 +33,7 @@ class Index extends Controller
 		//检查返回
 		$relsult_arr=json_decode($result,true);
 		if ($relsult_arr['status']==1){
-			$_SESSION['check_data']=$data;
+			session('check_data',$data);
 		}
 		return $result;
 	}
@@ -59,8 +59,29 @@ class Index extends Controller
 		$result = file_get_contents($url, false, $context);
 		return $result;
 	}
+	/**检查验证码并且跳转
+	 * @return \think\response\Json
+	 */
 	public function  check(){
-		$json_data=array('status'=>1);
+		//dump(session('check_data'));die();
+		$json_data=array('status'=>0);
+		if($_POST['code']==session('check_data.code')){
+			$json_data['status']=1;
+		}
+		$result =db('user')->where(array('phone'=>$_POST['mobile']))->find();
+		if (empty($result)){
+			$data=array(
+					'name'=>$_POST['username'],
+					'phone'=>$_POST['mobile'],
+					'nianji'=>$_POST['class_id']
+			);
+			$result_save=db('user')->insert($data);
+			session('user',$data);
+		}else {
+			session('user',$result);
+		}
+		
+		
 		return json($json_data);
 		//dump($_POST);die();
 	}
